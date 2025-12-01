@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	signal(SIGINT, on_exit);
 	signal(SIGTERM, on_exit);
 	on_exit(0);
+	watchdog();
 	// Check if stdin is FIFO
 	struct stat st;
 	if (fstat(fileno(stdin), &st) == -1) {
