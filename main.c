@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 	signal(SIGTERM, on_exit);
 	on_exit(0);
 	watchdog();
+	system("clear");
 	// Check if stdin is FIFO
 	struct stat st;
 	if (fstat(fileno(stdin), &st) == -1) {
@@ -44,7 +45,6 @@ int main(int argc, char **argv)
 			return 0;
 		}
 		if (sscanf(line, "%lf %lf %lf %lf", &x, &y, &z, &w) != 4) {
-			fprintf(stderr, "Invalid input line: %s\n", line);
 			continue;
 		}
 		struct compass_and_level cal = compute_compass_and_level_data(x, y, z, w);

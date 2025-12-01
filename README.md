@@ -16,3 +16,14 @@
 - Open drawer, if you cannot, edit termux keys and add a `DRAWER` key
 - Long press `keyboard` to disable it
 - To do these steps, I used scrcpy
+
+# How to run:
+```
+# level
+termux-sensor -c;clear;termux-sensor -d 100 -s "Your sensor name"|stdbuf -o0 jq -r '."Your sensor name".values[0:4] | @sh '|./gmt level
+# compass
+termux-sensor -c;clear;termux-sensor -d 100 -s "Your sensor name"|stdbuf -o0 jq -r '."Your sensor name".values[0:4] | @sh '|./gmt compass
+```
+```
+The sensor name can be found by running `termux-sensor -l`.
+For Samsung Galaxy Watch 7, the sensor name is `"GeoMag Rotation Vector Sensor"`, and for xiaomi 15, it's `"rotation vector  Non-wakeup"`.
