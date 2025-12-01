@@ -44,6 +44,7 @@ void show_compass_matrix(double angle_deg)
 		char ch;
 	} dirs[4] = { { 0, -2, 'N' }, { 0, 2, '#' }, { -2, 0, '#' }, { 2, 0, '#' } }; // NSWE if needed
 	int north_marked = 0;
+	static int first_bell = 1;
 	// Rotate vectors and map to grid
 	for (int k = 0; k < 4; k++) {
 		double x = dirs[k].dx;
@@ -74,10 +75,14 @@ void show_compass_matrix(double angle_deg)
 		grid[gy][gx] = dirs[k].ch;
 		if (gx == cx || gy == cy) {
 			north_marked = 1;
+		} else {
+			north_marked = 0;
+			first_bell = 1;
 		}
 	}
-	if (north_marked) {
+	if (north_marked && first_bell) {
 		printf("\a");
+		first_bell = 0;
 	}
 
 	// Output grid
