@@ -79,6 +79,9 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 	int cy_proj = (int)round(cy + center_dy1);
 
 	if (cx_proj >= 0 && cx_proj < SIZE && cy_proj >= 0 && cy_proj < SIZE) {
+		if (grid[cy_proj][cx_proj] == 'X') {
+			printf("\a");
+		}
 		grid[cy_proj][cx_proj] = 'X';
 	}
 	printf("\033[0H");
