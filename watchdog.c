@@ -12,7 +12,7 @@ void watchdog(void)
 		exit(0);
 	} else {
 		system("logcat -c");
-		system("logcat|grep --line-buffered -m1 -i visabilitychanged");
+		system("logcat|grep --line-buffered -m1 -i visibilityChanged");
 		exit(0);
 	}
 }
