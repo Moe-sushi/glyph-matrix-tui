@@ -47,12 +47,14 @@ void print_matrix(char **grid)
 	fflush(stdout);
 	struct winsize w;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-	int x_offset = (w.ws_col - SIZE * 2) / 2 - 1;
-	int y_offset = (w.ws_row - SIZE) / 2 - 1;
-	if (x_offset < 0)
+	int x_offset = (w.ws_col - SIZE * 2) / 2;
+	int y_offset = (w.ws_row - SIZE) / 2;
+	if (x_offset < 0) {
 		x_offset = 0;
-	if (y_offset < 0)
+	}
+	if (y_offset < 0) {
 		y_offset = 0;
+	}
 	for (int i = 0; i < y_offset; i++) {
 		printf("\n");
 		fflush(stdout);
