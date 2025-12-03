@@ -47,6 +47,7 @@ int main(int argc, char **argv)
 				return 0;
 			}
 			if (sscanf(line, "%lf %lf %lf %lf", &x, &y, &z, &w) != 4) {
+				line = read_line_from_stdin();
 				continue;
 			}
 			line = read_line_from_stdin();
