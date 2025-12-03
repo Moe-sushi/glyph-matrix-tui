@@ -59,6 +59,8 @@ int main(int argc, char **argv)
 			}
 			if (shake_detection(sx, sy, sz)) {
 				mode = 1 - mode;
+				fflush(stdout);
+				system("clear");
 			}
 			struct compass_and_level cal = compute_compass_and_level_data(x, y, z, w);
 			if (mode == 0) {
