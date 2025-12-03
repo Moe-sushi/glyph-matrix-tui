@@ -11,7 +11,7 @@ void show_compass_matrix(double angle_deg)
 
 	// Create empty grid
 	char **grid = init_matrix_grid();
-	init_matrix(grid, 1);
+	init_matrix(grid, 1, 'W');
 	// Center coordinates
 	int cx = SIZE / 2;
 	int cy = SIZE / 2;

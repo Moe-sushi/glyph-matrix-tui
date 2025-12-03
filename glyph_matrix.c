@@ -1,5 +1,5 @@
 #include "include/gmt.h"
-void init_matrix(char **grid, bool mark_center)
+void init_matrix(char **grid, bool mark_center, char fill_char)
 {
 	for (int i = 0; i < SIZE; i++) {
 		for (int j = 0; j < SIZE; j++) {
@@ -18,7 +18,7 @@ void init_matrix(char **grid, bool mark_center)
 
 			// Inside circle check
 			if (dx * dx + dy * dy < radius * radius) {
-				grid[i][j] = 'W'; // fill inside circle
+				grid[i][j] = fill_char; // fill inside circle
 			} else {
 				grid[i][j] = ' '; // outside circle
 			}

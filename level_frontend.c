@@ -11,7 +11,7 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 	double radius = SIZE / 2.0 - 1; // circle radius
 	// Grid and center
 	char **grid = init_matrix_grid();
-	init_matrix(grid, 1);
+	init_matrix(grid, 1, 'R');
 	int cx = SIZE / 2;
 	int cy = SIZE / 2;
 	// Draw rotated projection
@@ -38,8 +38,8 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 
 			// Bounds check and mark projection
 			if (gx > 0 && gx < SIZE - 1 && gy > 0 && gy < SIZE - 1) {
-				if (grid[gy][gx] == 'W') {
-					grid[gy][gx] = 'R';
+				if (grid[gy][gx] == 'R') {
+					grid[gy][gx] = 'W';
 				}
 			}
 		}
