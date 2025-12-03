@@ -45,7 +45,14 @@ int main(int argc, char **argv)
 			if (line == NULL) {
 				return 0;
 			}
-			if (sscanf(line, "%lf %lf %lf %lf %lf %lf %lf", &x, &y, &z, &w, &sx, &sy, &sz) != 7) {
+			if (sscanf(line, "%lf %lf %lf %lf", &x, &y, &z, &w) != 4) {
+				continue;
+			}
+			line = read_line_from_stdin();
+			if (line == NULL) {
+				return 0;
+			}
+			if (sscanf(line, "%lf %lf %lf", &sx, &sy, &sz) != 3) {
 				continue;
 			}
 			int mode = 0;
