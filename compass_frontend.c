@@ -48,7 +48,12 @@ void show_compass_matrix(double angle_deg)
 		if (gy >= SIZE) {
 			gy = SIZE - 1;
 		}
-
+		if (grid[gy][gx] != 'W') {
+			while (grid[gy][gx] != 'W') {
+				gx--;
+				gy--;
+			}
+		}
 		grid[gy][gx] = dirs[k].ch;
 		if (gx == cx || gy == cy) {
 			north_marked = 1;
