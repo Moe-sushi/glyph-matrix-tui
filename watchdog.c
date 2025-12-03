@@ -17,3 +17,17 @@ void watchdog(void)
 		exit(0);
 	}
 }
+bool shake_detection(double x, double y, double z)
+{
+	static int shake_count = 0;
+	const double SHAKE_THRESHOLD = 20.0; //
+	double magnitude = sqrt(x * x + y * y + z * z);
+	if (magnitude > SHAKE_THRESHOLD) {
+		shake_count++;
+		if (shake_count >= 2) {
+			shake_count = 0;
+			return true;
+		}
+	}
+	return false;
+}

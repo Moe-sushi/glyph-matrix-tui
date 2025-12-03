@@ -38,6 +38,29 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: stdin is not a FIFO\n");
 		return 1;
 	}
+	if (argc < 2) {
+		while (1) {
+			char *line = read_line_from_stdin();
+			double x, y, z, w, sx, sy, sz;
+			if (line == NULL) {
+				return 0;
+			}
+			if (sscanf(line, "%lf %lf %lf %lf %lf %lf %lf", &x, &y, &z, &w, &sx, &sy, &sz) != 7) {
+				continue;
+			}
+			int mode = 0;
+			if (shake_detection(sx, sy, sz)) {
+				mode = 1 - mode;
+			}
+			struct compass_and_level cal = compute_compass_and_level_data(x, y, z, w);
+			if (mode == 0) {
+				show_compass_matrix(cal.angle);
+			} else if (mode == 1) {
+				show_level_matrix(cal.roll, cal.pitch);
+			}
+		}
+		return 0;
+	}
 	while (1) {
 		char *line = read_line_from_stdin();
 		double x, y, z, w;
@@ -54,6 +77,7 @@ int main(int argc, char **argv)
 			show_level_matrix(cal.roll, cal.pitch);
 		} else {
 			fprintf(stderr, "Specify 'compass' or 'level' as argument\n");
+			return 1;
 		}
 	}
 	return 0;
