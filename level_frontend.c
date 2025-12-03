@@ -68,29 +68,10 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 			first_bell = 1;
 		}
 		grid[cy_proj][cx_proj] = 'G';
-		// Connect to center using Bresenham's line algorithm for smoother, continuous lines
-		int x0 = cx, y0 = cy;
-		int x1 = cx_proj, y1 = cy_proj;
-		int dx = abs(x1 - x0), sx = (x0 < x1) ? 1 : -1;
-		int dy = -abs(y1 - y0), sy = (y0 < y1) ? 1 : -1;
-		int err = dx + dy;
-		for (;;) {
-			if (grid[y0][x0] == 'W' || grid[y0][x0] == 'G') {
-				grid[y0][x0] = 'G';
-			}
-			if (x0 == x1 && y0 == y1) {
-				break;
-			}
-			int e2 = 2 * err;
-			if (e2 >= dy) {
-				err += dy;
-				x0 += sx;
-			}
-			if (e2 <= dx) {
-				err += dx;
-				y0 += sy;
-			}
-		}
+		grid[cy_proj - 1][cx_proj] = 'G';
+		grid[cy_proj + 1][cx_proj] = 'G';
+		grid[cy_proj][cx_proj - 1] = 'G';
+		grid[cy_proj][cx_proj + 1] = 'G';
 	}
 	print_matrix(grid);
 	free(buf);
