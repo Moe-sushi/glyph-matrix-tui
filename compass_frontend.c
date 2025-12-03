@@ -40,13 +40,13 @@ void show_compass_matrix(double angle_deg)
 			gx = 0;
 		}
 		if (gx >= SIZE - 1) {
-			gx = SIZE - 1;
+			gx = SIZE - 2;
 		}
 		if (gy < 0) {
 			gy = 0;
 		}
 		if (gy >= SIZE - 1) {
-			gy = SIZE - 1;
+			gy = SIZE - 2;
 		}
 		if (grid[gy][gx] == '0') {
 			while (grid[gy][gx] == '0') {
