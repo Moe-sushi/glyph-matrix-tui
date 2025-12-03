@@ -33,6 +33,8 @@ bool shake_detection(double x, double y, double z)
 		if (shake_count >= 2) {
 			shake_count = 0;
 			printf("\a");
+			fflush(stdout);
+			last_shake_time = current_time;
 			return true;
 		}
 	}
