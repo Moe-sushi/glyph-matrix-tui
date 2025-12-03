@@ -48,8 +48,8 @@ void show_compass_matrix(double angle_deg)
 		if (gy >= SIZE) {
 			gy = SIZE - 1;
 		}
-		if (grid[gy][gx] == '0') {
-			while (grid[gy][gx] == '0') {
+		if (grid[gy][gx] != '3') {
+			while (grid[gy][gx] != '3') {
 				if (gx > SIZE / 2) {
 					gx--;
 				} else if (gx < SIZE / 2) {
