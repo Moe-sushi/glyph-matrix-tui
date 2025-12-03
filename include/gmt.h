@@ -10,6 +10,7 @@
 #include <sys/ioctl.h>
 #include <sys/wait.h>
 #include <stdbool.h>
+#include <time.h>
 #define SIZE 25 // Grid size
 struct compass_and_level {
 	double angle;
