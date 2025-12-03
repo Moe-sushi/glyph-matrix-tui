@@ -38,8 +38,8 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 
 			// Bounds check and mark projection
 			if (gx > 0 && gx < SIZE - 1 && gy > 0 && gy < SIZE - 1) {
-				if (grid[gy][gx] == '#') {
-					grid[gy][gx] = '.';
+				if (grid[gy][gx] == 'W') {
+					grid[gy][gx] = 'R';
 				}
 			}
 		}
@@ -59,7 +59,7 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 	int cy_proj = (int)round(cy + center_dy1);
 	static int first_bell = 1;
 	if (cx_proj >= 0 && cx_proj < SIZE && cy_proj >= 0 && cy_proj < SIZE) {
-		if (grid[cy_proj][cx_proj] == 'X') {
+		if (grid[cy_proj][cx_proj] == 'G') {
 			if (first_bell) {
 				printf("\a");
 				first_bell = 0;
@@ -67,7 +67,7 @@ void show_level_matrix(double pitch_deg, double roll_deg)
 		} else {
 			first_bell = 1;
 		}
-		grid[cy_proj][cx_proj] = 'X';
+		grid[cy_proj][cx_proj] = 'G';
 	}
 	print_matrix(grid);
 	free(buf);

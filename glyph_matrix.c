@@ -45,12 +45,12 @@ void print_matrix(char **grid)
 			printf(" ");
 		}
 		for (int j = 0; j < SIZE; j++) {
-			if (grid[i][j] == '#') {
-				printf("\033[37m█▊");
-			} else if (grid[i][j] == 'N') {
+			if (grid[i][j] == 'R') {
 				printf("\033[31m█▊");
-			} else if (grid[i][j] == 'X') {
+			} else if (grid[i][j] == 'G') {
 				printf("\033[32m█▊");
+			} else if (grid[i][j] == 'W') {
+				printf("\033[37m█▊");
 			} else {
 				printf("  ");
 			}

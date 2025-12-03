@@ -19,7 +19,7 @@ void show_compass_matrix(double angle_deg)
 	struct Dir {
 		int dx, dy;
 		char ch;
-	} dirs[4] = { { 0, -2, 'N' }, { 0, 2, '#' }, { -2, 0, '#' }, { 2, 0, '#' } }; // NSWE if needed
+	} dirs[4] = { { 0, -2, 'R' }, { 0, 2, 'W' }, { -2, 0, 'W' }, { 2, 0, 'W' } }; // NSWE if needed
 	int north_marked = 0;
 	static int first_bell = 1;
 	// Rotate vectors and map to grid
