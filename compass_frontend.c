@@ -1,6 +1,8 @@
 #include "include/gmt.h"
 void show_compass_matrix(double angle_deg)
 {
+	char fill = '3';
+
 	char *buf = malloc(65536);
 	setvbuf(stdout, buf, _IOFBF, 65536);
 	printf("\033[?25l");
@@ -11,7 +13,7 @@ void show_compass_matrix(double angle_deg)
 
 	// Create empty grid
 	char **grid = init_matrix_grid();
-	init_matrix(grid, 1, '3');
+	init_matrix(grid, 1, fill);
 	// Center coordinates
 	int cx = SIZE / 2;
 	int cy = SIZE / 2;
@@ -19,7 +21,7 @@ void show_compass_matrix(double angle_deg)
 	struct Dir {
 		int dx, dy;
 		char ch;
-	} dirs[4] = { { 0, -2, 'R' }, { 0, 2, 'B' }, { -2, 0, '3' }, { 2, 0, '3' } }; // NSWE if needed
+	} dirs[4] = { { 0, -2, 'R' }, { 0, 2, 'B' }, { -2, 0, fill }, { 2, 0, fill } }; // NSWE if needed
 	int north_marked = 0;
 	static int first_bell = 1;
 	// Rotate vectors and map to grid
@@ -48,8 +50,8 @@ void show_compass_matrix(double angle_deg)
 		if (gy >= SIZE - 1) {
 			gy = SIZE - 2;
 		}
-		if (grid[gy][gx] != '3') {
-			while (grid[gy][gx] != '3') {
+		if (grid[gy][gx] != fill) {
+			while (grid[gy][gx] != fill) {
 				if (gx > SIZE / 2) {
 					gx--;
 				} else if (gx < SIZE / 2) {
