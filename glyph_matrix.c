@@ -74,7 +74,6 @@ void print_matrix(char **grid)
 				printf("  ");
 			}
 		}
-		printf("\n");
 	}
 	fflush(stdout);
 }
