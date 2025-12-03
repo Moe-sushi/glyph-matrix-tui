@@ -63,6 +63,16 @@ void show_compass_matrix(double angle_deg)
 			}
 		}
 		grid[gy][gx] = dirs[k].ch;
+		// Connect to center
+		int steps = fmax(fabs(gx - cx), fabs(gy - cy));
+		for (int s = 1; s < steps; s++) {
+			int ix = cx + (gx - cx) * s / steps;
+			int iy = cy + (gy - cy) * s / steps;
+			if (grid[iy][ix] == 'W') {
+				grid[iy][ix] = dirs[k].ch;
+			}
+		}
+		// Check for north marker
 		if (gx == cx || gy == cy) {
 			north_marked = 1;
 		} else {
